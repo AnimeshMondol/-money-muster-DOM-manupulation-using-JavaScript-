@@ -1,10 +1,11 @@
 // handle calculate button
 document.getElementById('calculate-button').addEventListener('click', function () {
     //user total income handle
+    
     const userTotalIncome = document.getElementById('user-income-input');
     const newtotalIncomeText = userTotalIncome.value;
     const newTotalIncome = parseFloat(newtotalIncomeText);
-
+    
     //user food amount handle
     const userFoodCostInput = document.getElementById('user-food-expenses');
     const newFoodAmountText = userFoodCostInput.value;
