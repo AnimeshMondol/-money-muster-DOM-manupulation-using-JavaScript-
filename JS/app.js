@@ -1,7 +1,7 @@
 // handle calculate button
-document.getElementById('calculate-button').addEventListener('click', function(){
+document.getElementById('calculate-button').addEventListener('click', function () {
     //user total income handle
-    const userTotalIncome = document.getElementById('user-income-input'); 
+    const userTotalIncome = document.getElementById('user-income-input');
     const newtotalIncomeText = userTotalIncome.value;
     const newTotalIncome = parseFloat(newtotalIncomeText);
 
@@ -9,7 +9,7 @@ document.getElementById('calculate-button').addEventListener('click', function()
     const userFoodCostInput = document.getElementById('user-food-expenses');
     const newFoodAmountText = userFoodCostInput.value;
     const newFoodAmount = parseFloat(newFoodAmountText);
-    
+
     //user rent amount handle
     const userRentCostInput = document.getElementById('user-rent-expenses');
     const newRentAmountText = userRentCostInput.value;
@@ -41,4 +41,32 @@ document.getElementById('calculate-button').addEventListener('click', function()
     userFoodCostInput.value = '';
     userRentCostInput.value = '';
     userClothsCostInput.value = '';
+
+    //handle the save button
+    document.getElementById('save-button').addEventListener('click', function () {
+        //user saveing % handle
+        const userSaveingParsentageAmount = document.getElementById('user-saveing-parcentage');
+        const userNewSaveingParsentageAmountText = userSaveingParsentageAmount.value;
+        const newUserSaveingParsentageAmount = parseFloat(userNewSaveingParsentageAmountText);
+
+        // handle saveing amount
+        const userSavingAmount = document.getElementById('user-saving-amount');
+        const userSavingAmountText = userSavingAmount.innerText;
+        const previousSavingAmount = parseFloat(userSavingAmountText);
+        const newSavingAmount = (((newUserSaveingParsentageAmount / 100) * newTotalIncome) + previousSavingAmount);
+
+        userSavingAmount.innerText = newSavingAmount;
+
+        //handle remaining balance amount
+        const userRemainingBalance = document.getElementById('user-remaining-balance');
+        const userRemainingBalanceText = userRemainingBalance.innerText;
+        const previousRemainingBalance = parseFloat(userRemainingBalanceText);
+        const newRemainingBalance = ((newUserBalance - newSavingAmount) + previousRemainingBalance);
+
+        userRemainingBalance.innerText = newRemainingBalance;
+
+        //clear the input field
+        userSaveingParsentageAmount.value = '';
+    });
 });
+
