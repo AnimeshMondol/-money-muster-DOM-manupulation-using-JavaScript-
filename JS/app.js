@@ -34,17 +34,30 @@ function userCurrentBalance(incomeAmount, isDone) {
     const userTotalIncome = getInputValue('user-income-input');
     const previousBalance = getPreviousBalance();
     const userCalculatedTotalExpence = updateCurrentTotalExpenses();
-    if(isDone == true){
+    if (isDone == true) {
         userBalance.innerText = ((previousBalance + incomeAmount) - userCalculatedTotalExpence);
+        if(userBalance.innerText < 0){
+            showErrorMessageForBalance();
+        }
+        else{
+            const userBalanceNew = userBalance.innerText;
+            return userBalanceNew;
+        }
     }
-    const userBalanceNew = userBalance.innerText;
-    return userBalanceNew;
+    // const userBalanceNew = userBalance.innerText;
+    // return userBalanceNew;
+}
+function previouslySavingAmount() {
+    const userSavingAmount = document.getElementById('user-saving-amount');
+    const userSavingAmountText = userSavingAmount.innerText;
+    const previousSavingAmount = parseFloat(userSavingAmountText);
+    return previousSavingAmount;
 }
 
 //Error Message
 function showErrorMessage() {
     const errorMessage = document.getElementById('error-message');
-    errorMessage.textContent = "Please Enter a Positive Number!!!"
+    errorMessage.textContent = "Please Enter a Positive Number!!!";
 }
 
 //Error Message for String
@@ -53,6 +66,16 @@ function showErrorMessageForString() {
     errorMessage.textContent = "You have entered a String. Please enter a Positive Number!!!"
 }
 
+//Error message for remaining balance
+function showErrorMessageForBalance() {
+    const errorMessage = document.getElementById('error-message-for-balance');
+    errorMessage.textContent = "Balance cannot be Negative!!!"
+}
+//Error message for remaining balance
+function showErrorMessageForRemainingBalance() {
+    const errorMessage = document.getElementById('error-message-for-remaining-balance');
+    errorMessage.textContent = "Remaining Balance cannot be Negative!!!"
+}
 // handle calculate button
 document.getElementById('calculate-button').addEventListener('click', function () {
     //user total income handle
@@ -71,7 +94,7 @@ document.getElementById('calculate-button').addEventListener('click', function (
     else {
         showErrorMessage();
     }
-    if (userTotalIncome > 0){
+    if (userTotalIncome > 0) {
         userCurrentBalance(userTotalIncome, true);
     }
     else if (isNaN(userTotalIncome)) {
@@ -127,6 +150,23 @@ document.getElementById('calculate-button').addEventListener('click', function (
     //handle the save button
     document.getElementById('save-button').addEventListener('click', function () {
         //user saveing % handle
+        // const userSaveingParsentageAmount = getInputValue('user-saveing-parcentage');
+        // const userTotalIncome = getInputValue('user-income-input');
+        // const userSavingAmount = document.getElementById('user-saving-amount');
+        // const prevSavingAmount = previouslySavingAmount();
+
+        // const newSavingAmount  = (((userSaveingParsentageAmount / 100) * userTotalIncome) + prevSavingAmount);
+
+        // if (newSavingAmount > 0) {
+        //     const newSavingAmount = userSavingAmount.innerText
+        // }
+        // else if (isNaN(newSavingAmount)) {
+        //     showErrorMessageForString();
+        // }
+        // else {
+        //     showErrorMessage();
+        // }
+
         const userSaveingParsentageAmount = document.getElementById('user-saveing-parcentage');
         const userNewSaveingParsentageAmountText = userSaveingParsentageAmount.value;
         const newUserSaveingParsentageAmount = parseFloat(userNewSaveingParsentageAmountText);
@@ -135,7 +175,7 @@ document.getElementById('calculate-button').addEventListener('click', function (
         const userSavingAmount = document.getElementById('user-saving-amount');
         const userSavingAmountText = userSavingAmount.innerText;
         const previousSavingAmount = parseFloat(userSavingAmountText);
-        const newSavingAmount = (((newUserSaveingParsentageAmount / 100) * newTotalIncome) + previousSavingAmount);
+        const newSavingAmount = (((newUserSaveingParsentageAmount / 100) * userTotalIncome) + previousSavingAmount);
 
         userSavingAmount.innerText = newSavingAmount;
 
@@ -143,13 +183,21 @@ document.getElementById('calculate-button').addEventListener('click', function (
         const userRemainingBalance = document.getElementById('user-remaining-balance');
         const userRemainingBalanceText = userRemainingBalance.innerText;
         const previousRemainingBalance = parseFloat(userRemainingBalanceText);
-        const newRemainingBalance = ((newUserBalance - newSavingAmount) + previousRemainingBalance);
+        const newRemainingBalance = ((userCurrentBalance() - newSavingAmount) + previousRemainingBalance);
 
-        userRemainingBalance.innerText = newRemainingBalance;
+        if (newRemainingBalance < 0) {
+            showErrorMessageForRemainingBalance();
+        }
+        else {
+            userRemainingBalance.innerText = newRemainingBalance;
+        }
+
 
         //clear the input field
         userSaveingParsentageAmount.value = '';
     });
 });
+
+
 
 
