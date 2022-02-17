@@ -1,3 +1,4 @@
+//function to handle all the input fields 
 function getInputValue(inputId) {
     const inputField = document.getElementById(inputId);
     const inputAmountText = inputField.value;
@@ -7,18 +8,23 @@ function getInputValue(inputId) {
     inputField.value = '';
     return inputAmountValue;
 }
+
 function getCurrentTotalExpenses() {
     const userTotalExpense = document.getElementById('total-expense');
     const userTotalExpenseText = userTotalExpense.innerText;
     const previousTotalExpense = parseFloat(userTotalExpenseText);
     return previousTotalExpense;
 }
+
+//function to get the previous balance
 function getPreviousBalance() {
     const userBalance = document.getElementById('total-balance');
     const userTotalExpenseText = userBalance.innerText;
     const previousTotalExpense = parseFloat(userTotalExpenseText);
     return previousTotalExpense;
 }
+
+//function to calculate the total expences
 function updateCurrentTotalExpenses(foodAmount, rentAmount, clothesAmount, isAdd) {
     const userTotalExpense = document.getElementById('total-expense');
     const previousTotalExpense = getCurrentTotalExpenses();
@@ -29,6 +35,7 @@ function updateCurrentTotalExpenses(foodAmount, rentAmount, clothesAmount, isAdd
     return totalExpenses;
 }
 
+//function to calculate the current user balance 
 function userCurrentBalance(incomeAmount, isDone) {
     const userBalance = document.getElementById('total-balance');
     const userTotalIncome = getInputValue('user-income-input');
@@ -43,6 +50,8 @@ function userCurrentBalance(incomeAmount, isDone) {
     const userBalanceNew = userBalance.innerText;
     return userBalanceNew;
 }
+
+//function to get the user saving amount and return the previous saving amount
 function previouslySavingAmount() {
     const userSavingAmount = document.getElementById('user-saving-amount');
     const userSavingAmountText = userSavingAmount.innerText;
@@ -81,6 +90,8 @@ document.getElementById('calculate-button').addEventListener('click', function (
     const userRentCost = getInputValue('user-rent-expenses');
     const userClothsCost = getInputValue('user-clothes-expenses');
 
+    //case handle if the income is greater then 0 then it will work elseif it will check if it is not a number
+    //then it will show a error message and then do the else conditoion
     if (userFoodCost > 0 && userRentCost > 0 && userClothsCost > 0) {
         updateCurrentTotalExpenses(userFoodCost, userRentCost, userClothsCost, true);
     }
@@ -90,6 +101,7 @@ document.getElementById('calculate-button').addEventListener('click', function (
     else {
         showErrorMessage();
     }
+    //error case handle 
     if (userTotalIncome > 0) {
         userCurrentBalance(userTotalIncome, true);
     }
