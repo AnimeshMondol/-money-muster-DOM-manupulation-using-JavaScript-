@@ -36,16 +36,12 @@ function userCurrentBalance(incomeAmount, isDone) {
     const userCalculatedTotalExpence = updateCurrentTotalExpenses();
     if (isDone == true) {
         userBalance.innerText = ((previousBalance + incomeAmount) - userCalculatedTotalExpence);
-        if(userBalance.innerText < 0){
+        if (userBalance.innerText < 0) {
             showErrorMessageForBalance();
         }
-        else{
-            const userBalanceNew = userBalance.innerText;
-            return userBalanceNew;
-        }
     }
-    // const userBalanceNew = userBalance.innerText;
-    // return userBalanceNew;
+    const userBalanceNew = userBalance.innerText;
+    return userBalanceNew;
 }
 function previouslySavingAmount() {
     const userSavingAmount = document.getElementById('user-saving-amount');
