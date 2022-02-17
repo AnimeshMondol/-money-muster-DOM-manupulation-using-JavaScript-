@@ -40,10 +40,10 @@
                         <input type="text" id="user-food-expenses" class="form-control"
                             aria-label="Amount (to the nearest dollar)" placeholder="Please enter your food cost $">
                         <span class="input-group-text">$</span>
-                        <span id="error"></span>
                     </div>
                     <div class="d-flex flex-row p-2 align-items-center">
-                        <label for="user-rent-expenses" class="col-form-label">Rent:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label for="user-rent-expenses"
+                            class="col-form-label">Rent:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="user-rent-expenses" class="form-control"
                             aria-label="Amount (to the nearest dollar)" placeholder="Please enter your rent cost $">
                         <span class="input-group-text">$</span>
@@ -54,7 +54,9 @@
                             aria-label="Amount (to the nearest dollar)" placeholder="Please enter your clothes cost $">
                         <span class="input-group-text">$</span>
                     </div>
-                    <br>
+                    <div class="d-flex flex-row justify-content-center mt-3">
+                        <h6 id="error-message" class="text-danger fw-bolder"></h6>
+                    </div>
                     <div class="d-flex flex-row justify-content-center">
                         <button id="calculate-button" class="btn btn-primary ps-5 pe-5 fs-4">Calculate</button>
                     </div>
