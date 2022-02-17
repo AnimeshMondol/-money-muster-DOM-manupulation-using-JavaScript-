@@ -100,69 +100,9 @@ document.getElementById('calculate-button').addEventListener('click', function (
         showErrorMessage();
     }
 
-    // const userBalance = document.getElementById('total-balance');
-    // const previousBalance = getPreviousBalance();
-    // const userCalculatedTotalExpence = updateCurrentTotalExpenses();
-    // const calculatedBalance = ((previousBalance + userTotalIncome) - userCalculatedTotalExpence);
-    // userBalance.innerText = calculatedBalance;
-
-    // //user food amount handle
-    // const userFoodCostInput = document.getElementById('user-food-expenses');
-    // const newFoodAmountText = userFoodCostInput.value;
-    // const newFoodAmount = parseFloat(newFoodAmountText);
-
-    // //user rent amount handle
-    // const userRentCostInput = document.getElementById('user-rent-expenses');
-    // const newRentAmountText = userRentCostInput.value;
-    // const newRentAmount = parseFloat(newRentAmountText);
-
-    // //user clothes amount handle
-    // const userClothsCostInput = document.getElementById('user-clothes-expenses');
-    // const newClothesAmountText = userClothsCostInput.value;
-    // const newClothesAmount = parseFloat(newClothesAmountText);
-
-    // //update total expances 
-    // const userTotalExpense = document.getElementById('total-expense');
-    // const userTotalExpenseText = userTotalExpense.innerText;
-    // const previousTotalExpense = parseFloat(userTotalExpenseText);
-    // const newTotalExpenses = previousTotalExpense + newClothesAmount + newRentAmount + newFoodAmount;
-
-    // userTotalExpense.innerText = newTotalExpenses;
-
-    // //update balance 
-    // const userBalance = document.getElementById('total-balance');
-    // const userBalenceText = userBalance.innerText;
-    // const previousTotalBalance = parseFloat(userBalenceText);
-    // const newUserBalance = ((previousTotalBalance + newTotalIncome) - newTotalExpenses);
-
-    // userBalance.innerText = newUserBalance
-
-    // //clear all the input field
-    // userTotalIncome.value = '';
-    // userFoodCostInput.value = '';
-    // userRentCostInput.value = '';
-    // userClothsCostInput.value = '';
-
     //handle the save button
     document.getElementById('save-button').addEventListener('click', function () {
         //user saveing % handle
-        // const userSaveingParsentageAmount = getInputValue('user-saveing-parcentage');
-        // const userTotalIncome = getInputValue('user-income-input');
-        // const userSavingAmount = document.getElementById('user-saving-amount');
-        // const prevSavingAmount = previouslySavingAmount();
-
-        // const newSavingAmount  = (((userSaveingParsentageAmount / 100) * userTotalIncome) + prevSavingAmount);
-
-        // if (newSavingAmount > 0) {
-        //     const newSavingAmount = userSavingAmount.innerText
-        // }
-        // else if (isNaN(newSavingAmount)) {
-        //     showErrorMessageForString();
-        // }
-        // else {
-        //     showErrorMessage();
-        // }
-
         const userSaveingParsentageAmount = document.getElementById('user-saveing-parcentage');
         const userNewSaveingParsentageAmountText = userSaveingParsentageAmount.value;
         const newUserSaveingParsentageAmount = parseFloat(userNewSaveingParsentageAmountText);
@@ -187,8 +127,6 @@ document.getElementById('calculate-button').addEventListener('click', function (
         else {
             userRemainingBalance.innerText = newRemainingBalance;
         }
-
-
         //clear the input field
         userSaveingParsentageAmount.value = '';
     });
